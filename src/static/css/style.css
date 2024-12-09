@@ -1,0 +1,112 @@
+/*
+    French Class Project Game Website game module.
+    Copyright 2022 Samyar Projects
+    Written by Samyar Sadat Akhavi, 2023.
+*/
+
+.bg-game {
+    background: linear-gradient(120deg, var(--bs-indigo), var(--bs-pink));
+    background-attachment:fixed;
+    height:100%;
+}
+
+.game-container {
+    --bs-gutter-game-x: 1.5rem;
+    --bs-gutter-game-y: 0;
+    width: 95%;
+    padding-right: calc(var(--bs-gutter-game-x) * .5);
+    padding-left: calc(var(--bs-gutter-game-x) * .5);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.w-40 {
+    width: 40%;
+}
+
+.w-70 {
+    width: 70%;
+}
+
+.w-60 {
+    width: 60%;
+}
+
+.h-opacity-80:hover {
+    transition: 0.3s;
+    opacity: 80%;
+}
+
+.h-opacity-80 {
+    transition: 0.3s;
+}
+
+.h-color-white:hover {
+    transition: 0.3s;
+    color: white;
+}
+
+.h-color-white {
+    transition: 0.3s;
+    color: gray;
+}
+
+.carousel-caption {
+    bottom: 8rem;
+    z-index: 10;
+}
+
+.carousel-item {
+    height: 28rem;
+}
+
+.carousel-item>img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-width: 100%;
+    height: 28rem;
+}
+
+.pixelated {
+    image-rendering: pixelated;
+}
+
+.shadow-info {
+    box-shadow: 0 0 5px #0dcaf04b, 0 0 15px #4dd5ff91, 0 0 20px #4dd5ff91;
+}
+
+.shadow-success {
+    box-shadow: 0 0 1rem #0ac442;
+}
+
+.shadow-danger {
+    box-shadow: 0 0 1rem #ff0019;
+}
+
+.shadow-dark {
+    box-shadow: 0 0 1rem #1b1b1b70;
+}
+
+.barcode {
+    font-family: "Libre Barcode 39", cursive;
+    font-size: 60px;
+    margin: 0;
+}
+
+.fade-in-flash {
+    animation: fadeInFlash linear 0.5s;
+    margin-top: 30px;
+}
+
+@keyframes fadeInFlash {
+    0% {
+        opacity: 0;
+        margin-top: -50px;
+    }
+
+    100% {
+        opacity: 1;
+        margin-top: 30px;
+    }
+}

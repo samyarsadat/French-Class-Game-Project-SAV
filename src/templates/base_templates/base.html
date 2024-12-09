@@ -1,0 +1,65 @@
+<!-- 
+    French Class Project Game Website base HTML template file.
+    Copyright 2023 Samyar Sadat Akhavi
+    Written by Samyar Sadat Akhavi, 2023.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include "base_templates/template_modules/head.html" %}
+
+        <!-- Head block -->
+        {% block head %}
+        {% endblock %}
+
+        <!-- Page title block -->
+        <title>{% block title %}{% endblock %} | Jeu Français</title>
+    </head>
+
+    <body class="bg-light">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a href="{{url_for("index")}}" class="text-decoration-none text-light">
+                        <h4>Jeu Français</h4>
+                    </a>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                {% include "base_templates/template_modules/main_nav.html" %}
+            </div>
+        </nav>
+
+        {% include "base_templates/template_modules/flash_messages.html" %}
+        
+        <!-- Body block -->
+        {% block body %}
+        {% endblock %}
+
+        <!-- Footer -->
+        <footer class="d-flex flex-wrap py-3 bg-dark {% block footer %}{% endblock %}">
+            <div class="container">
+                <div class="text-center text-lg-start d-lg-inline d-block">
+                    <a href="{{url_for("index")}}" class="text-decoration-none">
+                        <img src="{{url_for("static", filename="img/logos/sp-symbol-transparent.svg")}}" width="25">
+                    </a>
+                        
+                    <span class="text-white ms-2">Copyright &copy; 2023 Samyar Sadat Akhavi.</span>
+                </div>
+            </div>
+        </footer>
+
+        {% include "base_templates/template_modules/end.html" %}
+
+        <!-- End block -->
+        {% block end %}
+        {% endblock %}
+    </body>
+</html>
+
+

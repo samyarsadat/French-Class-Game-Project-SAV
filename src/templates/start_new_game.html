@@ -1,0 +1,20 @@
+{% extends "base_templates/base.html" %}
+
+{% block title %}Commencer une nouvelle partie{% endblock %}
+
+{% block body %}
+<div class="container my-4">
+    <h4 class="text-center mb-4">Nouvelle Configuration de Jeu</h4>
+
+    <form action="{{url_for("start_new_game")}}" method="POST">
+        <div class="form-floating mb-4 mt-5">
+            <input name="game_name" type="text" class="form-control rounded-3" id="game_name" value="{{default_gn}}" required>
+            <label for="game_name">Nom du Fichier de Jeu</label>
+        </div>
+
+        <button class="w-100 btn btn-lg rounded-3 btn-outline-success mb-4" type="submit">Page Suivante</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block footer %}{% if GAME_MAX_PLAYERS < 8 %}fixed-bottom{% endif %}{% endblock %}

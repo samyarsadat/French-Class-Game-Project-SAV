@@ -1,0 +1,167 @@
+{
+    "question_pack_name": "Test Pack",
+    
+    "categories": [
+        "Category 1",
+        "Category 2",
+        "Category 3",
+        "Category 4"
+    ],
+
+    "questions": [
+        {
+            "question_html": "TEST 0A",
+            "correct_answer_id": 0, 
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": 0,
+            "points": 100
+        },
+        {
+            "question_html": "TEST 0B",
+            "correct_answer_id": 0, 
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": 0,
+            "points": 200
+        },
+        {
+            "question_html": "TEST 0C",
+            "correct_answer_id": 0,
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": 0,
+            "points": 300
+        },
+        {
+            "question_html": "TEST 0D",
+            "correct_answer_id": 0,
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": 0,
+            "points": 400
+        },
+        
+        
+
+        {
+            "question_html": "TEST 1A",
+            "correct_answer_id": 0,
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": 1,
+            "points": 100
+        },
+        {
+            "question_html": "TEST 1B",
+            "correct_answer_id": 0,
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": 1,
+            "points": 200
+        },
+        {
+            "question_html": "TEST 1C",
+            "correct_answer_id": 0,
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": 1,
+            "points": 300
+        },
+        {
+            "question_html": "TEST 1D",
+            "correct_answer_id": 0,
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": 1,
+            "points": 400
+        },
+
+
+
+        {
+            "question_html": "TEST 2A",
+            "correct_answer_id": 0,
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": 2,
+            "points": 100
+        },
+        {
+            "question_html": "TEST 2B",
+            "correct_answer_id": 0,
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": 2,
+            "points": 200
+        },
+        {
+            "question_html": "TEST 2C",
+            "correct_answer_id": 0,
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": 2,
+            "points": 300
+        },
+        {
+            "question_html": "TEST 2D",
+            "correct_answer_id": 0,
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": 2,
+            "points": 400
+        },
+
+
+
+        {
+            "question_html": "TEST 3A",
+            "correct_answer_id": 0,
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": 3,
+            "points": 100
+        },
+        {
+            "question_html": "TEST 3B",
+            "correct_answer_id": 0,
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": 3,
+            "points": 200
+        },
+        {
+            "question_html": "TEST 3C",
+            "correct_answer_id": 0,
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": 3,
+            "points": 300
+        },
+        {
+            "question_html": "TEST 3D",
+            "correct_answer_id": 0,
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": 3,
+            "points": 400
+        }
+    ],
+
+    "tiebreaker_questions": [
+        {
+            "question_html": "TEST TB-A",
+            "correct_answer_id": 0,
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": null,
+            "points": 200
+        },
+        {
+            "question_html": "TEST TB-B",
+            "correct_answer_id": 0,
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": null,
+            "points": 200
+        },
+        {
+            "question_html": "TEST TB-C",
+            "correct_answer_id": 0,
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": null,
+            "points": 200
+        },
+        {
+            "question_html": "TEST TB-D",
+            "correct_answer_id": 0,
+            "answer_opts_html": ["<h5 class='m-0'>A ANSWER</h5>", "<h5 class='m-0'>B ANSWER</h5>", "<h5 class='m-0'>C ANSWER</h5>", "<h5 class='m-0'>D ANSWER</h5>"],
+            "category_id": null,
+            "points": 200
+        }
+    ],
+
+    "points_increment": 100
+}

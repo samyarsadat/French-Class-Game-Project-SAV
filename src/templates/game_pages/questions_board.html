@@ -1,0 +1,72 @@
+{% extends "base_templates/game_base.html" %}
+
+{% block title %}Jeu Actif{% endblock %}
+
+{% block body %}
+<div class="game-container mt-5 mb-4">
+    <h2 class="text-center text-black rounded rounded-3 bg-light p-2 bg-opacity-25 mb-4 shadow shadow-dark">Sélectionnez une Question - <strong>({% if gamedata.current_board_owner_id != None %}{{gamedata.players[gamedata.current_board_owner_id].name}}{% else %}FATAL ERROR{% endif %})</strong></h2>
+
+    <div class="row m-0">
+        {% for cat in gamedata.categories %}
+        <div class="col my-3 {% if loop.index != 1 %}ms-4{% endif %} p-0">
+            <div class="card bg-warning rounded-3 shadow shadow-dark">
+                <div class="card-body text-center">
+                    <h3 class="m-0">{{cat}}</h3>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <h5 class="text-center mb-4 py-1 text-bg-danger">ERREUR CRITIQUE DE CONFIGURATION DU SYSTÈME</h5>
+        {% endfor %}
+    </div>
+
+    <div class="row m-0">
+        {% for cat in gamedata.categories %}
+        {% set quest_cat_loop = loop %}
+        <div class="col {% if loop.index != 1 %}ms-4{% endif %}">
+            {% for quest in gamedata.questions %}
+                {% if quest.category_id == (quest_cat_loop.index - 1) %}
+                <div class="row my-4">
+                    <a class="btn text-dark m-0 p-0 border-0 {% if quest.is_enabled %}h-opacity-80{% else %}opacity-50 disabled{% endif %} shadow shadow-dark rounded-4" tabindex="-1" href="{{url_for("game_pages.load_question", filename=filename, quest_id=loop.index0)}}" role="button">
+                        <div class="card bg-info rounded-4">
+                            <div class="card-body text-center">
+                                <h5 class="m-1"><strong>{{quest.points}}</strong></h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endif %}
+            {% else %}
+            <h5 class="text-center mb-4 py-1 text-bg-danger">ERREUR CRITIQUE DE CONFIGURATION DU SYSTÈME</h5>
+            {% endfor %}
+        </div>
+        {% else %}
+        <h5 class="text-center mb-4 py-1 text-bg-danger">ERREUR CRITIQUE DE CONFIGURATION DU SYSTÈME</h5>
+        {% endfor %}
+    </div>
+</div>
+
+{% if gamedata.won_by_id != None %}
+<div class="text-center mt-5">
+    <div class="bg-success bg-opacity-75 text-light rounded rounded-pill px-3 py-2 d-inline-block shadow shadow-dark mt-2">
+        <h3 class="m-0">Vainqueur: <strong>{{gamedata.players[gamedata.won_by_id].name}}</strong></h3>
+    </div>
+</div>
+{% endif %}
+
+<div class="fixed-bottom game-container mb-5">
+    <div class="float-start">
+        {% for player in gamedata.players %}
+        <div class="bg-dark bg-opacity-50 text-light rounded rounded-pill px-3 py-2 d-inline-block me-1 shadow shadow-dark">
+            <h5 class="m-0"><strong>{{player.name}}: </strong>{{player.score}}</h5>
+        </div>
+        {% else %}
+        <h5 class="text-center mb-4 py-1 text-bg-danger">ERREUR CRITIQUE DE CONFIGURATION DU SYSTÈME</h5>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="fixed-bottom game-container mb-5">
+    <a href="{{url_for("game_pages.close_game", filename=filename)}}" class="btn btn-success btn-lg float-end rounded-5 shadow shadow-dark" role="button">Fermer le Jeu</a>
+</div>
+{% endblock %}

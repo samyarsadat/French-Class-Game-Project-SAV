@@ -1,0 +1,26 @@
+{% extends "base_templates/game_base.html" %}
+
+{% block title %}Jeu Actif{% endblock %}
+
+{% block body %}
+<div class="game-container my-5">
+    <h1 class="text-center text-black rounded rounded-3 bg-light p-3 bg-opacity-25 mb-4 shadow shadow-dark">Ces Joueurs Sont à Égalité</h1>
+</div>
+
+<div class="text-center mt-5">
+{% for player_id in tied_player_ids %}
+    <div class="mx-3 bg-info bg-opacity-25 text-light rounded rounded-4 px-3 py-2 d-inline-block shadow shadow-dark mt-2">
+        <h3 class="m-3">
+            <strong>{{gamedata.players[player_id].name}}</strong>
+            <p class="opacity-75">{{gamedata.players[player_id].score}}pts<p>
+        </h3>
+    </div>
+{% else %}
+    <h3 class="text-center mb-4 py-1 text-bg-danger">ERREUR CRITIQUE DE CONFIGURATION DU SYSTÈME</h3>
+{% endfor %}
+</div>
+
+<div class="fixed-bottom game-container mb-5">
+    <a href="{{url_for("game_pages.load_tiebreaker", filename=filename)}}" class="btn btn-info btn-lg float-start rounded-5 shadow shadow-dark" role="button">Passez à la question de départage</a>
+</div>
+{% endblock %}

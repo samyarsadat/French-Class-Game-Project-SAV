@@ -1,0 +1,21 @@
+{% extends "base_templates/base.html" %}
+
+{% block title %}Charger le jeu à partir du fichier{% endblock %}
+
+{% block body %}
+<div class="container mt-4 mb-5">
+    <h4 class="text-center">Jeux Sauvegardés</h4>
+
+    <div class="list-group rounded-0 mt-4">
+        <li class="list-group-item bg-primary text-light">Nom de Fichier</li>
+        
+        {% for file in files %}
+            <a href="{{url_for("game_pages.load_game", filename=file)}}" class="list-group-item list-group-item-action font-monospace"><strong>{{file}}</strong></a>
+        {% else %}
+            <li class="list-group-item bg-danger text-light">Vous n'avez aucune partie sauvegardée.</li>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}{% if files | length < 17 %}fixed-bottom{% endif %}{% endblock %}

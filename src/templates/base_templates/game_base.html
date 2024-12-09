@@ -1,0 +1,35 @@
+<!-- 
+    French Class Project Game Website game base HTML template file.
+    Copyright 2023 Samyar Sadat Akhavi
+    Written by Samyar Sadat Akhavi, 2023.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include "base_templates/template_modules/head.html" %}
+
+        <!-- Head block -->
+        {% block head %}
+        {% endblock %}
+
+        <!-- Page title block -->
+        <title>{% block title %}{% endblock %} | Jeu Français</title>
+    </head>
+
+    <body class="bg-game">
+        {% include "base_templates/template_modules/flash_messages.html" %}
+        
+        <!-- Body block -->
+        {% block body %}
+        {% endblock %}
+
+        {% include "base_templates/template_modules/end.html" %}
+
+        <!-- End block -->
+        {% block end %}
+        {% endblock %}
+    </body>
+</html>
+
+

@@ -1,0 +1,177 @@
+{% extends "base_templates/game_base.html" %}
+
+{% block title %}Bris d'égalité{% endblock %}
+
+{% block body %}
+<div class="game-container my-5" id="main">
+    <h2 class="text-center text-black rounded rounded-3 bg-light p-2 bg-opacity-25 mb-4 shadow shadow-dark">{% if buzzed %}Répondez à la question <strong>{{filedata.players[buzzed_by].name}}</strong>{% elif show_answer %}Réponse{% else %}Appuyez sur le bouton lorsque vous êtes prêt{% endif %}</h2>
+
+    {% if not show_answer and buzzed %}
+    <div class="progress mb-sm-2 mb-0 rounded-3 bg-dark bg-opacity-25 shadow-dark shadow" style="height: 28px;">
+        <div id="timeBar" class="progress-bar progress-bar-striped progress-bar-animated bg-success shadow-dark" role="progressbar"></div>
+    </div>
+    {% endif %}
+
+    {% if not show_answer and buzzed %}
+    <div class="pb-1"></div>
+
+    <div class="d-inline float-start bg-dark bg-opacity-50 rounded rounded-3 shadow shadow-dark px-2 py-1">
+        <p class="d-inline text-light">Temps Restant: </p>
+        <p class="text-primary d-inline"><span id="timer">00:00</span></p>
+    </div>
+    
+    <div class="pb-4"></div>
+    {% endif %}
+ 
+    <div class="mt-5 rounded-3 shadow-dark bg-white bg-opacity-50">
+        <div class="p-sm-3 p-2">
+            {{filedata.tiebreaker_question.question_html | safe}}
+        </div>
+    </div>
+
+    <form action="{{url_for("game_pages.load_tiebreaker", filename=filename, tied_player_ids=tied_player_ids)}}" class="mt-5" method="POST">
+        <div class="album">
+            <div class="row row-cols-1 row-cols-md-2 g-3">
+                <div class="col">
+                    <button class="btn-primary btn w-100 shadow{% if show_answer and filedata.tiebreaker_question.correct_answer_id == 0 %}-success border-success bg-success text-white opacity-100{% endif %}{% if show_wrong_answer and actual_answ == 0 and filedata.tiebreaker_question.correct_answer_id != 0 %}-danger bg-danger border-danger text-white opacity-100{% endif %} rounded-4 p-3 {% if show_answer %}disabled btn-dark{% endif %}{% if not buzzed and not show_answer %}disabled opacity-100{% endif %} {% if show_wrong_answer %}opacity-75{% endif %}" value="answ_0_{{buzzed_by}}" type="submit" name="answ">
+                        {{filedata.tiebreaker_question.answer_opts_html[0] | safe}}
+                    </button>
+                </div>
+
+                <div class="col">
+                    <button class="btn-danger btn w-100 shadow{% if show_answer and filedata.tiebreaker_question.correct_answer_id == 1 %}-success border-success bg-success text-white opacity-100{% endif %}{% if show_wrong_answer and actual_answ == 1 and filedata.tiebreaker_question.correct_answer_id != 1 %}-danger bg-danger border-danger text-white opacity-100{% endif %} rounded-4 p-3 {% if show_answer %}disabled btn-dark{% endif %}{% if not buzzed and not show_answer %}disabled opacity-100{% endif %} {% if show_wrong_answer %}opacity-75{% endif %}" value="answ_1_{{buzzed_by}}" type="submit" name="answ">
+                        {{filedata.tiebreaker_question.answer_opts_html[1] | safe}}
+                    </button>
+                </div>
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-2 g-3 mt-1">
+                <div class="col">
+                    <button class="btn-success btn w-100 shadow{% if show_answer and filedata.tiebreaker_question.correct_answer_id == 2 %}-success border-success bg-success text-white opacity-100{% endif %}{% if show_wrong_answer and actual_answ == 2 and filedata.tiebreaker_question.correct_answer_id != 2 %}-danger bg-danger border-danger text-white opacity-100{% endif %} rounded-4 p-3 {% if show_answer %}disabled btn-dark{% endif %}{% if not buzzed and not show_answer %}disabled opacity-100{% endif %} {% if show_wrong_answer %}opacity-75{% endif %}" value="answ_2_{{buzzed_by}}" type="submit" name="answ">
+                        {{filedata.tiebreaker_question.answer_opts_html[2] | safe}}
+                    </button>
+                </div>
+
+                <div class="col">
+                    <button class="btn-warning btn w-100 shadow{% if show_answer and filedata.tiebreaker_question.correct_answer_id == 3 %}-success border-success bg-success text-white opacity-100{% endif %}{% if show_wrong_answer and actual_answ == 3 and filedata.tiebreaker_question.correct_answer_id != 3 %}-danger bg-danger border-danger text-white opacity-100{% endif %} rounded-4 p-3 {% if show_answer %}disabled btn-dark{% endif %}{% if not buzzed and not show_answer %}disabled opacity-100{% endif %} {% if show_wrong_answer %}opacity-75{% endif %}" value="answ_3_{{buzzed_by}}" type="submit" name="answ">
+                        {{filedata.tiebreaker_question.answer_opts_html[3] | safe}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% if show_answer %}
+<div class="fixed-bottom game-container mb-5">
+    <a href="{{url_for("game_pages.load_game", filename=filename)}}" class="btn btn-info btn-lg float-start rounded-5 shadow shadow-dark" role="button">Continuez</a>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block end %}
+{% if not show_answer and buzzed %}
+<script>
+    function submitNoAnsw()
+    {
+        var form = document.createElement("FORM");
+        form.setAttribute("id", "submitOnEnd");
+        document.body.appendChild(form);
+        
+        var button = document.createElement("INPUT");
+        button.setAttribute("name", "answ");
+        button.setAttribute("type", "text");
+        button.setAttribute("value", "{% if buzzed %}ANSW_BUZZED_TIMEOUT{% else %}ANSW_TIMEOUT{% endif %}");
+        document.getElementById("submitOnEnd").appendChild(button);
+
+        form.method = "POST";
+        form.action = "{{url_for("game_pages.load_tiebreaker", filename=filename, quest_id=quest_id)}}";
+        form.submit();
+    }
+    
+    window.onload = function () 
+    {
+        duration = {% if not buzzed %}{{QUESTION_MAX_TIME}}{% else %}{{QUESTION_MAX_ANSWER_TIME}}{% endif %};
+        display = document.getElementById("timer");
+        bar = document.getElementById("timeBar");
+        main = document.getElementById("main");
+
+        var start = Date.now(), diff, minutes, seconds;
+        
+        function timer() 
+        {
+            diff = duration - (((Date.now() - start) / 1000) | 0);
+    
+            minutes = (diff / 60) | 0;
+            seconds = (diff % 60) | 0;
+    
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            percent = diff / duration * 100;
+    
+            bar.style.width = percent + "%";
+            display.textContent = minutes + ":" + seconds; 
+    
+            if (diff <= 0) 
+            {
+                start = Date.now() + 1000;
+            }
+
+            if (minutes <= "00" && seconds <= "15" && seconds > "08")
+            {
+                display.style.color = "darkorange";
+
+                bar.classList.remove("bg-success");
+                bar.classList.add('bg-warning');
+            }
+
+            if (minutes <= "00" && seconds <= "08")
+            {
+                display.style.color = "red";
+
+                bar.classList.remove("bg-warning");
+                bar.classList.add('bg-danger');
+            }
+
+            if (minutes == "00" && seconds == "00")
+            {
+                main.parentNode.removeChild(main);
+                submitNoAnsw();
+            }
+        }
+
+        timer();
+        setInterval(timer, 100);
+    };
+</script>
+{% endif %}
+
+{% if not show_answer and not buzzed %}
+<script>
+    document.onkeydown = function (data) {
+        if (data.ctrlKey && data.altKey)
+        {
+            var key = data.code.replace("Numpad", "");
+            
+            if (key <= ({{filedata.players | length | string}} - 1))
+            {
+                var form = document.createElement("FORM");
+                form.setAttribute("id", "submitOnBuzz");
+                document.body.appendChild(form);
+                
+                var button = document.createElement("INPUT");
+                button.setAttribute("name", "player");
+                button.setAttribute("type", "text");
+                button.setAttribute("value", key);
+                document.getElementById("submitOnBuzz").appendChild(button);
+
+                form.method = "POST";
+                form.action = "{{url_for("game_pages.load_tiebreaker", filename=filename, quest_id=quest_id)}}";
+                form.submit();
+            }
+        }
+    };
+</script>
+{% endif %}
+{% endblock %}
